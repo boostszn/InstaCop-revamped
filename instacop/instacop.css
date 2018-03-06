@@ -1,0 +1,294 @@
+/* Fullscreen, fixed and no-overscroll background picture. */
+html { 
+	background: url(img/background.jpg) no-repeat center center fixed;
+	background-color: white;
+	background-size: cover;
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	height: 100%;
+	overflow: auto;
+	line-height: 1.4rem; /* reduce bulma spacing */
+}
+
+[v-cloak] { display: none !important }
+
+
+/* Borderless, full-width reCAPTCHA frame. */
+.g-recaptcha-wrap {
+	display: flex;
+	align-items: center; /* center cropped iframe */
+	height: 70px;
+	background: #f9f9f9; /* iframe color */
+}
+.g-recaptcha {
+	position: relative;
+	overflow: hidden;
+}
+.g-recaptcha > * {
+	margin: -14px -88px -15px -1px; /* crop logo and regulatory text */
+}
+
+
+/* SVG Logos. */
+.header-logo {
+	display: block; /* make <a/> behave like <div/> */
+	background-color: white;
+	-webkit-mask: url(img/logo.svg) 50% / contain no-repeat; /* h-center */
+	height: 70px;
+	width: 130px; /* full-width + space for hovering */
+	margin: 6px auto; /* h-center */
+	transition: background-color 0.5s ease;
+	animation: flicker 3s linear;
+}
+.header-logo:hover {
+	background-color: white;
+}
+
+.bq-logo {
+	display: inline-block;
+	background-color: white;
+	-webkit-mask: url(img/bq.svg) 100% / contain no-repeat; /* h-right */
+	height: auto;  /* full */
+	width: 28px;
+	margin: -6px 0;  /* expand top and bottom. */
+}
+.bq-logo:hover {
+	animation: pulse 1.5s ease infinite;
+}
+
+
+/* Colors. */
+.black {
+	color: #363636;
+}
+.red {
+	color: rgb(185, 17, 9);
+}
+.red-fill {
+	color: white;
+	background-color: rgb(185, 17, 9);
+}
+
+
+/* Cursor & Select. */
+.title, .label, .tag {
+	cursor: default;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+
+/* Helper classes. */
+.has-pointer {
+	cursor: pointer;
+}
+.is-hidden {
+	display: none;
+}
+.is-bold {
+	font-weight: bold;
+}
+.is-flex {
+	display: flex;
+}
+.flex-default {
+	flex: 1;
+}
+.has-text-right {
+	text-align: right !important; /* fix Bulma class */
+}
+.has-strike {
+	opacity: 0.5;
+	text-decoration: line-through;
+	-webkit-text-decoration-color: rgb(185, 17, 9);
+}
+
+
+#app > * > * {
+	z-index: 1;
+	position: relative;
+}
+
+/* Main content spacing. */
+.main {
+	background-color: white;
+	padding-bottom: 30px;
+	animation: slideUp 1s ease;
+	z-index: 0 !important;
+}
+.main > div:nth-child(1) {
+	padding-right: 40px;
+}
+.main > div:nth-child(2) {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.main > div:nth-child(3) {
+	padding-left: 40px;
+}
+h1.title {
+	 font-size: 1.8rem;
+}
+
+/* Footer (+links). */
+.end {
+	margin-bottom: 20px !important;
+	padding: 5px 5px;
+}
+.end a {
+	color: white;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+.end a:hover {
+	border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+
+/* Overwrite Bulma table config. */
+.table {
+	line-height: 1.2rem;
+	font-size: 0.85rem;
+	margin-bottom: 0;
+}
+.table thead th {
+	color: #363636;
+}
+td {
+	color: #7a7a7a;
+}
+
+
+/* Re-style Bulma elements: controls. */
+
+.control > * {
+	font-size: 0.85rem;
+}
+.control > .input {
+	font-family: "SF Mono", "Consolas", "Lucida Sans Typewriter", "Lucida Console", "Fira Code", "Droid Sans Mono", "Source Code Pro", monospace;
+	text-overflow: ellipsis;
+}
+.control > button {
+	font-weight: bold;
+}
+
+.select {
+	width: 100%;
+}
+.select::after, .select:hover::after {
+	border-color: #363636;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #dbdbdb;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #dbdbdb;
+}
+
+.control * {
+	border: 0 !important;
+	border-radius: 0px !important;
+	border-bottom: 2px solid #dbdbdb !important; /* table border color */
+	box-shadow: none !important;
+	outline: 0 !important;
+}
+.control *:hover {
+	border-bottom-color: #363636 !important;
+}
+.control *:focus, .control *:active, .is-active, .button:hover {
+	border-bottom-color: rgb(185, 17, 9) !important;
+}
+.input[readonly] {
+	border-bottom-color: #dbdbdb !important;
+	cursor: e-resize;
+}
+.button[disabled] {
+	border-bottom-color: #dbdbdb !important;
+}
+.blue-ul {
+	border-bottom-color: #00d1b2 !important;
+}
+
+.control.ctrl-small {
+	display: flex;
+	/*align-items: flex-end;*/
+}
+.control.ctrl-small > *{
+	font-size: 0.7rem;
+	height: auto;
+	/*margin-top: auto;*/
+}
+
+
+/* Re-style Bulma elements: title and label tags */
+.title {
+	font-weight: bold;
+	margin-bottom: 1rem !important;
+}
+.label {
+	display: flex;
+    justify-content: space-between;
+}
+.label > * {
+	display: flex;
+	align-items: center;
+}
+.tag {
+	font-size: 0.75rem;
+	height: 1.8em;
+}
+
+
+/* Product image. */
+.pid-wrap {
+	display: flex;
+	width: 58px; /* almost square */
+	margin-left: 0.75rem; /* matches is-grouped field */
+}
+.pid-img {
+	flex: 1;
+	height: unset;
+	background-size: cover;
+	background-position: bottom;
+}
+
+.label-inactive {
+	color: #dbdbdb;
+}
+
+/* ATC response iFrame. */
+.cart-frame {
+	min-height: 590px; /* init table height + buffer */
+	width: 100%;
+	background-color: #f9f9f9;
+}
+
+
+/* Opacity animations. */
+@keyframes zero {
+	  0% { opacity:  1; }
+	100% { opacity:  1; }
+}
+@keyframes fadeIn {
+	  0% { opacity:  0; }
+	100% { opacity:  1; }
+}
+@keyframes flicker {
+	  0% { opacity:  0; }
+	 30% { opacity:  0; }
+	 31% { opacity: .5; }
+	 35% { opacity:  0; }
+	 45% { opacity:  1; }
+}
+@keyframes pulse {
+	  0% { opacity:  1; }
+	 50% { opacity:  0; }
+	100% { opacity:  1; }
+}
+@keyframes slideUp {
+	  0% { transform: translateY(30px); opacity: 0; }
+	 30% { transform: translateY(30px); opacity: 0; }
+	100% { transform: translateY( 0px); opacity: 1; }
+}
